@@ -119,6 +119,9 @@ figure.highlight
   table
     width 100%
     border-spacing 0
+    display block  // 修改为块级元素
+    overflow-x auto  // 添加横向滚动
+    -webkit-overflow-scrolling touch  // 启用平滑滚动
     
   // 行号区域
   .gutter
@@ -142,6 +145,8 @@ figure.highlight
       margin 0
       color $codeTextLight
       font-size 0.95em
+      white-space pre
+      overflow visible  // 确保内容不被截断
       
   // 行高亮
   .marked

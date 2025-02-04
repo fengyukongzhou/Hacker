@@ -55,3 +55,82 @@ article
         &:not(:last-of-type):after
           content ","
           padding-right 5px
+
+// 暗色模式样式
+[data-theme="dark"] {
+  .category-list {
+    .category-list-title {
+      color: #fff !important;
+    }
+    
+    .category-list-item {
+      a {
+        color: #fff !important;
+        
+        &:hover {
+          color: var(--link-color) !important;
+        }
+      }
+      
+      .category-list-count {
+        color: rgba(255, 255, 255, 0.7) !important;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+  
+  .categories-title {
+    color: #fff !important;
+  }
+  
+  .category-all-page {
+    .category-all-title {
+      color: #fff !important;
+    }
+    
+    .category-all {
+      a {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.1);
+        
+        &:hover {
+          color: var(--link-color) !important;
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+      
+      .category-count {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+    }
+  }
+
+  // 分类泡泡样式
+  article {
+    .categories-cloud,
+    .archive-categories {
+      color: rgba(255, 255, 255, 0.7);
+
+      a {
+        color: #fff !important;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 8px;
+        border-radius: 999em;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: #fff !important;
+          background: var(--link-color);
+        }
+
+        &:before {
+          color: #fff !important;
+        }
+      }
+
+      i {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+}

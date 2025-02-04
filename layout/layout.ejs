@@ -7,7 +7,9 @@
   <script>
     // 主题切换功能
     function initTheme() {
-      const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('darkMode');
+      const darkModeEnabled = savedTheme !== null ? savedTheme === 'true' : prefersDark;
       document.documentElement.setAttribute('data-theme', darkModeEnabled ? 'dark' : 'light');
       const themeToggle = document.querySelector('.theme-toggle');
       if (themeToggle) {
@@ -24,8 +26,21 @@
       themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
 
+    // 在页面加载时初始化主题
+    document.addEventListener('DOMContentLoaded', initTheme);
+
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (localStorage.getItem('darkMode') === null) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+          themeToggle.innerHTML = e.matches ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
-      initTheme();
       document.querySelectorAll('figure.highlight').forEach(function(block) {
         // 添加 MAC 风格按钮
         const macButtons = document.createElement('div');
@@ -176,11 +191,10 @@
 </button>
 <div class="blog">
   <div class="content">
-
     <%- partial('components/header') %>
-
+    
     <main class="site-main posts-loop">
-    <%- body %>
+      <%- body %>
     </main>
 
     <%- partial('components/footer') %>

@@ -5,6 +5,14 @@ menu:
   Categories: /categories
   Tags: /tags
 
+# 网站图标配置
+favicon:
+  enable: true
+  icon: /favicon_io/favicon.ico     # 基础图标
+  apple_touch_icon: /favicon_io/apple-touch-icon.png  # iOS设备图标
+  android_chrome_icon: /favicon_io/android-chrome-192x192.png  # Android Chrome图标
+  manifest: /favicon_io/site.webmanifest  # PWA应用配置文件
+
 # LeanCloud 点赞功能配置
 # 使用说明：
 # 1. 请先在 LeanCloud 官网注册账号：https://www.leancloud.cn/

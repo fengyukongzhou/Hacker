@@ -59,6 +59,23 @@ menu:
   Categories: /categories
   Tags: /tags
 
+# 网站图标配置
+# 可以使用 https://favicon.io/favicon-converter/ 在线生成图标
+# 生成后将所有文件放入 source/favicon_io 目录下：
+# - android-chrome-192x192.png
+# - android-chrome-512x512.png
+# - apple-touch-icon.png
+# - favicon-16x16.png
+# - favicon-32x32.png
+# - favicon.ico
+# - site.webmanifest
+favicon:
+  enable: true
+  icon: /favicon_io/favicon.ico     # 基础图标
+  apple_touch_icon: /favicon_io/apple-touch-icon.png  # iOS设备图标
+  android_chrome_icon: /favicon_io/android-chrome-192x192.png  # Android Chrome图标
+  manifest: /favicon_io/site.webmanifest  # PWA应用配置文件
+
 # 是否显示阅读更多按钮
 read_more_btn: false
 

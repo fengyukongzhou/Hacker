@@ -276,3 +276,63 @@ article.archive
     color #fff
     text-shadow 0 0 10px rgba(240, 56, 56, 0.5)
 
+// 暗色模式样式
+[data-theme="dark"] {
+  .archive-post {
+    .archive-title {
+      color: #fff !important;
+      
+      a {
+        color: #fff !important;
+        
+        &:hover {
+          color: var(--link-color) !important;
+        }
+      }
+    }
+    
+    time {
+      a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        
+        &:hover {
+          color: var(--link-color) !important;
+        }
+      }
+    }
+  }
+  
+  .archive-year {
+    .year-title {
+      color: #fff !important;
+      border-bottom-color: #333;
+      
+      &:after {
+        background: var(--link-color);
+      }
+    }
+  }
+  
+  .archive-item {
+    &:before {
+      background: var(--link-color);
+    }
+    
+    .archive-post {
+      time {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      
+      .archive-title {
+        a {
+          color: #fff !important;
+          
+          &:hover {
+            color: var(--link-color) !important;
+          }
+        }
+      }
+    }
+  }
+}
+

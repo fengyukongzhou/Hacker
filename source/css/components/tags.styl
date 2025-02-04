@@ -55,3 +55,118 @@ article
         &:not(:last-of-type):after
           content ","
           padding-right 5px
+
+.tags
+  margin-bottom 30px
+  
+  a
+    margin-right 15px
+    display inline-block
+    text-decoration none
+    border-radius 999em
+    padding 0 10px
+    color #333
+    border 1px solid #333
+    font-size 14px
+    transition all 0.3s ease
+    
+    &:hover
+      color #fff
+      background-color #333
+      border-color #333
+
+// 暗色模式样式
+[data-theme="dark"]
+  .tags
+    a
+      color #fff
+      border-color #fff
+      background-color rgba(255, 255, 255, 0.1)
+      
+      &:hover
+        color #121212
+        background-color #fff
+        border-color #fff
+
+  .tag-cloud-tags
+    a
+      display: inline-block
+      text-decoration: none
+      border-radius: 999em
+      padding: 2px 8px
+      color: #333
+      background: #f2f2f2
+      font-size: 14px
+      transition: all 0.3s ease
+      margin: 5px
+      
+      &:hover
+        color: #fff
+        background-color: #333
+
+  .tags-cloud,
+  .archive-tags
+    a
+      color: #fff
+      
+      &:hover
+        color: #f03838
+
+.tag-cloud-tags
+  a
+    display: inline-block
+    text-decoration: none
+    border-radius: 999em
+    padding: 2px 8px
+    color: #333
+    background: #f2f2f2
+    font-size: 14px
+    transition: all 0.3s ease
+    margin: 5px
+    
+    &:hover
+      color: #fff
+      background-color: #333
+
+.post-tags
+  margin: 0 0 20px
+  
+  a
+    display: inline-block
+    text-decoration: none
+    border-radius: 999em
+    padding: 2px 8px
+    color: #333
+    background: #f2f2f2
+    font-size: 14px
+    transition: all 0.3s ease
+    margin: 0 5px 5px 0
+    
+    &:hover
+      color: #fff
+      background-color: #333
+
+// 暗色模式样式
+[data-theme="dark"]
+  .tag-cloud-tags,
+  .post-tags
+    a
+      color: #fff
+      background: rgba(255, 255, 255, 0.1)
+      
+      &:hover
+        color: #121212
+        background-color: #fff
+
+  .tags-cloud,
+  .archive-tags
+    a
+      color: #fff
+      
+      &:hover
+        color: #f03838
+
+  .post-tags
+    a
+      &:before
+        color: #fff

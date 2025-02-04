@@ -28,6 +28,13 @@
   %>
   <title><%= title.join(' | ') %></title>
 
+  <% if (theme.favicon && theme.favicon.enable) { %>
+    <link rel="icon" href="<%- url_for(theme.favicon.icon) %>">
+    <link rel="apple-touch-icon" href="<%- url_for(theme.favicon.apple_touch_icon) %>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<%- url_for(theme.favicon.android_chrome_icon) %>">
+    <link rel="manifest" href="<%- url_for(theme.favicon.manifest) %>">
+  <% } %>
+
   <% if (config.author){ %>
   <meta name="author" content="<%= config.author %>">
   <% } %>

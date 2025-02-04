@@ -60,6 +60,23 @@ menu:
   Categories: /categories
   Tags: /tags
 
+# Website favicon configuration
+# Generate favicons using https://favicon.io/favicon-converter/
+# After generation, place all files in the source/favicon_io directory:
+# - android-chrome-192x192.png
+# - android-chrome-512x512.png
+# - apple-touch-icon.png
+# - favicon-16x16.png
+# - favicon-32x32.png
+# - favicon.ico
+# - site.webmanifest
+favicon:
+  enable: true
+  icon: /favicon_io/favicon.ico     # Basic favicon
+  apple_touch_icon: /favicon_io/apple-touch-icon.png  # iOS device icon
+  android_chrome_icon: /favicon_io/android-chrome-192x192.png  # Android Chrome icon
+  manifest: /favicon_io/site.webmanifest  # PWA application configuration file
+
 # Whether to show read more button
 read_more_btn: false
 

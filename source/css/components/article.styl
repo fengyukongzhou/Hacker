@@ -26,8 +26,8 @@ article
     margin-left -75px
 
   blockquote
-    margin 2rem 0
-    padding 1rem 1.5rem
+    margin 0.2rem 0
+    padding 0.2rem 1rem
     line-height 2rem
     border-left 4px solid $hackerRed
     background-color rgba(0, 0, 0, 0.03)
@@ -81,6 +81,20 @@ article
     font-size 1.6rem
     color $articleTextColor
 
+    p
+      margin 2rem 0
+      line-height 1.8
+
+    h2
+      margin-top 3.5rem
+      margin-bottom 2rem
+      color $articleTitleColor
+      
+    h3
+      margin-top 3rem
+      margin-bottom 1.5rem
+      color $articleTitleColor
+
     .excerpt-btn
       margin 4rem 0
       font-size 1.4rem
@@ -90,6 +104,18 @@ article
       max-width: 100%
       height auto
       margin 1rem auto
+      
+    figure
+      margin 1rem auto
+      
+      img
+        margin 0 auto
+        
+      figcaption
+        text-align center
+        color $hackerGray
+        font-size 1.4rem
+        margin-top 0.5rem
 
   .article-footer
     .pull-left
@@ -146,11 +172,6 @@ article
     color $articleCodeColor
     white-space normal
     border-radius 0
-
-  p
-    margin 2rem 0
-    line-height 1.8
-
 
   .video-container
     position: relative;

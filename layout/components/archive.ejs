@@ -26,6 +26,11 @@ var years = Object.keys(postsByYear).sort(function(a, b){
 <article>
   <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= title %></h2>
 
+  <!-- 热力图容器 -->
+  <div class="heatmap-container" style="margin: 30px 0;">
+    <div id="heatmapChart" style="width: 100%; height: 200px; overflow-x: auto; overflow-y: hidden;"></div>
+  </div>
+
   <div class="archive">
     <% years.forEach(function(year){ %>
     <div class="archive-group">

@@ -3,7 +3,7 @@ $paginationCommonHoverColor = #fff
 $paginationBorderCommonColor = #e0e0e0
 
 $paginationDarkColor = #f03838
-$paginationDarkHoverColor = #000
+$paginationDarkHoverColor = #fff
 $paginationBorderDarkColor = #636366
 
 .pagination
@@ -44,5 +44,17 @@ $paginationBorderDarkColor = #636366
 
       &:hover
         color: $paginationDarkHoverColor;
+        background-color: $paginationDarkColor;
+        border-color: $paginationDarkColor;
+
+[data-theme="dark"]
+  .pagination
+    .pagination-prev
+    .pagination-next
+      color $paginationDarkColor
+      border: 1px solid $paginationBorderDarkColor;
+
+      &:hover
+        color: #fff;
         background-color: $paginationDarkColor;
         border-color: $paginationDarkColor;

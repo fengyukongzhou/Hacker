@@ -1,0 +1,410 @@
+$hackerRed = #f03838
+$hackerGray = #9e9e9e
+$articleTitleColor = #212121
+$articleTextColor = #424242
+$articleCodeColor = #c7254e
+
+$articleTitleDarkColor = #f6f2f5
+$articleTextDarkColor = #fff
+$articleCodeDarkColor = #f45542
+
+article
+  position relative
+  padding 2rem 0
+
+  a
+    color $hackerRed
+
+  &:not(:first-child):before
+    content ''
+    width 150px
+    height 1px
+    background-color rgba(224, 224, 224, 0.5)
+    position absolute
+    top 0
+    left 50%
+    margin-left -75px
+
+  blockquote
+    margin 0.2rem 0
+    padding 0.2rem 1rem
+    line-height 2rem
+    border-left 4px solid $hackerRed
+    background-color rgba(0, 0, 0, 0.03)
+    border-radius 0 4px 4px 0
+
+  .article-title
+    position relative
+    color $articleTitleColor
+    font-size 2.4rem
+    line-height 1.3
+    text-align center
+    margin 0
+    padding 0 2rem
+
+    a
+      display block
+      color $articleTitleColor
+
+      span
+        padding-bottom 3px
+        -webkit-transition 0.15s
+        transition 0.15s
+        box-shadow inset 0 -2px 0 rgba(240, 56, 56, 0)
+
+      &:hover
+        color $articleTitleColor
+
+        span
+          box-shadow inset 0 -2px 0 rgba(240, 56, 56, 0.4)
+
+  .article-top-meta
+    position relative
+    color $hackerGray
+    font-size 1.3rem
+    text-align center
+    margin 1rem 0
+
+    span
+      margin 0 0.5rem
+
+    a
+      color $hackerGray
+      &:hover
+        color $hackerRed
+
+      time
+        font-style italic
+
+  .article-excerpt, .article-content, .featured-media
+    margin 4rem 0
+    font-size 1.6rem
+    color $articleTextColor
+
+    p
+      margin 2rem 0
+      line-height 1.8
+
+    h2
+      margin-top 3.5rem
+      margin-bottom 2rem
+      color $articleTitleColor
+      
+    h3
+      margin-top 3rem
+      margin-bottom 1.5rem
+      color $articleTitleColor
+
+    .excerpt-btn
+      margin 4rem 0
+      font-size 1.4rem
+
+    img
+      display block
+      max-width: 100%
+      height auto
+      margin 1rem auto
+      
+    figure
+      margin 1rem auto
+      
+      img
+        margin 0 auto
+        
+      figcaption
+        text-align center
+        color $hackerGray
+        font-size 1.4rem
+        margin-top 0.5rem
+
+  .article-footer
+    .pull-left
+      float left
+    .pull-right
+      float right
+
+    &:after
+      content " "
+      display block
+      clear both
+
+    .article-meta > span:not(:last-child)
+      margin-right 3rem
+
+    .article-meta > span
+      display inline-block
+
+    .article-meta > span > span
+      line-height 1
+      vertical-align middle
+
+    .article-meta
+      font-size 1.3rem
+      color $hackerGray
+
+      a
+        color $hackerGray
+        &:hover
+          color $hackerRed
+
+      i
+        vertical-align middle
+        color $hackerGray
+        margin-right 0.5rem
+
+    .post-tags
+      a
+        display: inline-block
+        text-decoration: none
+        border-radius: 999em
+        padding: 2px 8px
+        color: #333
+        background: #f2f2f2
+        font-size: 14px
+        transition: all 0.3s ease
+        margin: 0 5px 5px 0
+        
+        &:hover
+          color: #fff !important
+          background-color: $hackerRed
+          border-color: $hackerRed
+          
+        &:before
+          content "#"
+
+        &:not(:last-of-type):after
+          content ""
+          padding-right 0
+
+  code
+    padding 2px 4px
+    margin-left 2px
+    margin-right 2px
+    color $articleCodeColor
+    white-space normal
+    border-radius 0
+
+  .video-container
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0;
+    height: 0;
+    overflow: hidden;
+
+    iframe
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+  table
+    max-width 100%
+    width 100%
+
+    caption
+      padding 5px
+      color #333
+      background-color #e5e5e5
+
+    th, td
+      text-align left
+      padding 0.6em
+      vertical-align top
+
+    th
+      vertical-align bottom
+      border-bottom 1px solid #e5e5e5
+
+    tbody + tbody
+      border-top 2px solid #e5e5e5
+
+    .table
+      background-color #fff
+
+
+    .table-bordered
+      border 1px solid #e5e5e5
+
+    .table-striped tbody tr:nth-of-type(odd)
+      background-color:#f2f2f2
+
+    pre
+      overflow-x auto
+      overflow-y hidden
+
+.post-toc
+  position: fixed
+  right: 0
+  top: 80px
+  width: 260px
+  background: var(--toc-bg)
+  padding: 15px 15px 15px 25px
+  box-shadow: 0 0 10px rgba(0,0,0,0.1)
+  max-height: calc(100vh - 100px)
+  overflow-y: auto
+  transition: all 0.3s ease-in-out
+  z-index: 100
+  border-radius: 4px 0 0 4px
+  
+  &::-webkit-scrollbar
+    width: 4px
+    
+  &::-webkit-scrollbar-track
+    background: transparent
+    
+  &::-webkit-scrollbar-thumb
+    background: var(--border-color)
+    border-radius: 2px
+    
+    &:hover
+      background: #bbb
+  
+  &.toc-hidden
+    transform: translateX(calc(100% - 25px))
+    background: transparent
+    box-shadow: none
+    
+  .toc-toggle
+    position: absolute
+    left: 0
+    top: 50%
+    transform: translateY(-50%)
+    width: 25px
+    height: 50px
+    background: var(--toc-toggle-bg)
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1)
+    border-radius: 4px 0 0 4px
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 101
+    transition: all 0.2s ease-in-out
+    
+    &:hover
+      width: 28px
+      
+      i
+        color: #f03838
+    
+    i
+      font-size: 16px
+      color: var(--text-color)
+      transition: all 0.3s ease-in-out
+    
+    &.toc-toggle-hidden
+      i
+        transform: rotate(180deg)
+
+  .post-toc-content
+    h2
+      font-size: 16px
+      margin-bottom: 12px
+      padding-bottom: 8px
+      border-bottom: 2px solid var(--toc-border)
+      color: var(--toc-text)
+      font-weight: 600
+      
+    ol
+      counter-reset: section
+      list-style-type: none
+      margin-left: 0
+      padding-left: 0
+      
+      li
+        padding-left: 18px
+        line-height: 1.6
+        margin-bottom: 6px
+        position: relative
+        transition: all 0.2s ease-in-out
+        
+        &:before
+          counter-increment: section
+          content: counter(section) "."
+          position: absolute
+          left: 0
+          color: var(--text-color)
+          font-size: 12px
+          top: 2px
+        
+        ol
+          counter-reset: subsection
+          margin-top: 6px
+          padding-left: 12px
+          
+          li
+            &:before
+              counter-increment: subsection
+              content: counter(section) "." counter(subsection)
+              font-size: 11px
+              
+            ol
+              counter-reset: subsubsection
+              
+              li:before
+                counter-increment: subsubsection
+                content: counter(section) "." counter(subsection) "." counter(subsubsection)
+                font-size: 11px
+    
+    .toc-link
+      color: var(--text-color)
+      text-decoration: none
+      font-size: 13px
+      display: block
+      margin-left: 15px
+      position: relative
+      transition: all 0.2s ease
+      
+      &:hover
+        color: #f03838
+        transform: translateX(3px)
+      
+      &.active
+        color: #f03838
+        font-weight: 500
+        
+        &:before
+          content: ""
+          position: absolute
+          left: -15px
+          top: 50%
+          transform: translateY(-50%)
+          width: 3px
+          height: 14px
+          background: #f03838
+          border-radius: 1px
+
+// 暗色模式样式
+[data-theme="dark"]
+  article
+    .article-title
+      color $articleTitleDarkColor
+      a
+        color $articleTitleDarkColor
+
+    .article-excerpt, .article-content, .featured-media
+      color $articleTextDarkColor
+
+      h2, h3, h4, h5, h6
+        color $articleTitleDarkColor
+
+      code
+        color $articleCodeDarkColor
+        background-color rgba(255, 255, 255, 0.1)
+
+      blockquote
+        background-color rgba(255, 255, 255, 0.05)
+        
+    .post-tags
+      a
+        color: #fff
+        background: rgba(255, 255, 255, 0.1)
+        
+        &:hover
+          color: #fff !important
+          background-color: var(--link-color)
+          border-color: var(--link-color)
+          
+        &:before
+          color: #fff

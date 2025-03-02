@@ -1,0 +1,50 @@
+@media (min-width: 768px)
+  article
+    padding 2rem 0
+  
+  // PC端的悬停效果
+  .toc-toggle
+    &:hover
+      i
+        color #F03838
+
+@media (max-width: 768px)
+  .blog
+    padding: 0 10px
+
+  .content
+    padding: 20px !important
+    margin: 10px auto
+    border-radius: 4px
+
+  article
+    padding 1.5rem 0 !important
+    
+  // 移动端的按钮样式
+  .toc-toggle
+    background-color transparent
+    transition all 0.3s ease
+    
+    &.toc-toggle-hidden
+      i
+        color #F03838
+
+// 目录样式
+.post-toc
+  &.toc-hidden
+    background-color transparent
+    .post-toc-content
+      opacity 0
+      visibility hidden
+
+.post-toc-content
+  transition opacity 0.3s ease, visibility 0.3s ease
+
+// 目录切换按钮基础样式
+.toc-toggle
+  background-color transparent
+  transition all 0.3s ease
+  
+  i
+    transition color 0.3s ease
+

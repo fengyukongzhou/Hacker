@@ -1,0 +1,85 @@
+@import "../fonts/fonts.styl"
+
+.like-button-container
+  text-align center
+  margin 2em 0
+  position relative
+
+.like-button
+  background none
+  border 2px solid #F03838
+  color #F03838
+  padding 8px 20px
+  border-radius 20px
+  font-size 16px
+  cursor pointer
+  transition all 0.3s ease
+  outline none
+  margin-bottom 10px
+  
+  &:hover:not(:disabled)
+    background #F03838
+    color white
+    transform translateY(-2px)
+    box-shadow 0 2px 8px rgba(240, 56, 56, 0.3)
+  
+  &:active:not(:disabled)
+    transform translateY(0)
+  
+  &.liked
+    background #F03838
+    color white
+    
+    &:hover
+      background none
+      color #F03838
+      transform translateY(-2px)
+      box-shadow 0 2px 8px rgba(240, 56, 56, 0.3)
+    
+    & + .like-message
+      opacity 1
+      transform translateY(0)
+  
+  i
+    margin-right 8px
+    transition transform 0.3s ease
+    
+    .liked &
+      transform scale(1.1)
+    
+  .like-count
+    display inline-block
+    min-width 20px
+
+.like-message
+  position absolute
+  width 100%
+  left 0
+  bottom -35px
+  opacity 0
+  transform translateY(-10px)
+  transition all 0.3s ease
+  pointer-events none
+  
+  .luoziwuhui-svg
+    height 30px
+    width auto
+    display block
+    margin 0 auto
+
+// 暗色模式适配
+@media (prefers-color-scheme dark)
+  .like-button
+    background rgba(240, 56, 56, 0.1)
+    
+    &:hover:not(:disabled)
+      background #F03838
+    
+    &.liked
+      background #F03838
+      
+      &:hover
+        background rgba(240, 56, 56, 0.1)
+  
+  .like-message
+    color #F03838 

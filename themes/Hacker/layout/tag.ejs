@@ -4,7 +4,15 @@
       <i class="icon-tags"></i> 标签：<%= page.tag %>
     </h2>
     <div class="tag-meta">
-      <span class="tag-count"><%= page.posts.length %> 篇文章</span>
+      <% 
+        // 获取当前标签下的所有文章
+        var tagPosts = site.posts.filter(function(post) {
+          return post.tags && post.tags.data.some(function(tag) {
+            return tag.name === page.tag;
+          });
+        }).sort('date', -1);
+      %>
+      <span class="tag-count"><%= tagPosts.length %> 篇文章</span>
     </div>
   </header>
 
@@ -23,7 +31,7 @@
   </div>
 
   <div class="archive">
-    <% page.posts.sort('-date').map(function(post){ %>
+    <% tagPosts.map(function(post){ %>
       <div class="archive-item">
         <div class="archive-post">
           <time datetime="<%= post.date.toDate().toISOString() %>">
@@ -41,5 +49,7 @@
         </div>
       </div>
     <% }) %>
+    
+    <!-- 移除了分页组件 -->
   </div>
 </article> 

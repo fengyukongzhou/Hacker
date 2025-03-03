@@ -19,8 +19,24 @@ A simple, elegant Hexo theme focused on writing and reading experience. Demo: [f
 - 💬 Multiple comment systems support
 - 📊 Google Analytics and Baidu Statistics support
 - 📝 MathJax support
+- 📈 Integrated hexo-graph data visualization
+- 🖋 Elegant typography with special handling for Chinese/English italics
 
 ## Quick Start
+
+### Prerequisites
+
+1. Install required plugins:
+```bash
+# Install hexo-graph plugin for data visualization
+npm install hexo-graph
+
+# Or using yarn
+yarn add hexo-graph
+
+# Or using pnpm
+pnpm add hexo-graph
+```
 
 ### Installation
 
@@ -136,6 +152,24 @@ like_button:
   appKey: your-app-key
   serverURL: your-server-url
 ```
+
+## Usage Guide
+
+### Italic Style for Chinese and English
+
+This theme handles italic text differently for Chinese and English content:
+
+1. Chinese text: Uses Kai (楷体) font instead of italic (default behavior)
+```markdown
+*这是中文内容*  -> Will be displayed in Kai font
+```
+
+2. English text: Requires language specification for italic display
+```markdown
+*<em lang="en">This is English content</em>*  -> Will be displayed in italic
+```
+
+This design choice provides better readability for Chinese text, as italic Chinese characters can be less aesthetically pleasing and harder to read.
 
 ## Contributing
 

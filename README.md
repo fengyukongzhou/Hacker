@@ -18,8 +18,24 @@
 - 💬 多评论系统支持
 - 📊 Google Analytics 和百度统计支持
 - 📝 MathJax 数学公式支持
+- 📈 集成 hexo-graph 数据可视化
+- 🖋 优雅的中英文排版，中文斜体自动转换为楷体
 
 ## 快速开始
+
+### 前置要求
+
+1. 安装必需的插件：
+```bash
+# 安装 hexo-graph 插件用于数据可视化
+npm install hexo-graph
+
+# 或使用 yarn
+yarn add hexo-graph
+
+# 或使用 pnpm
+pnpm add hexo-graph
+```
 
 ### 安装
 
@@ -142,4 +158,22 @@ like_button:
 
 ## 许可证
 
-[MIT License](LICENSE) 
+[MIT License](LICENSE)
+
+## 使用说明
+
+### 中英文斜体样式
+
+本主题对中英文斜体采用了不同的处理方式：
+
+1. 中文内容：使用楷体代替斜体（默认行为）
+```markdown
+*这是中文内容*  -> 将显示为楷体
+```
+
+2. 英文内容：需要特别指定语言以显示为斜体
+```markdown
+*<em lang="en">This is English content</em>*  -> 将显示为斜体
+```
+
+这样的设计是为了提供更好的中文阅读体验，因为中文字符倾斜往往会影响美观和可读性。 

@@ -60,7 +60,7 @@
       <%
         var cats = [];
         item.categories.forEach(function(cat){
-            cats.push('<a href="' + config.root + 'categories/#category-' + encodeURIComponent(cat.name) + '">' + cat.name + '</a>');
+            cats.push('<a href="' + config.root + 'categories/' + encodeURIComponent(cat.name) + '/">' + cat.name + '</a>');
         });
       %>
 
@@ -74,7 +74,7 @@
     <%
         var tags = [];
         item.tags.forEach(function(tag){
-            tags.push('<a href="' + config.root + 'tags/#tag-' + encodeURIComponent(tag.name) + '">' + tag.name + '</a>');
+            tags.push('<a href="' + config.root + 'tags/' + encodeURIComponent(tag.name) + '/">' + tag.name + '</a>');
         });
     %>
 

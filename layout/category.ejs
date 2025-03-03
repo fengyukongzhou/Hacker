@@ -1,0 +1,46 @@
+<article class="category-detail">
+  <header class="category-header">
+    <h2 class="article-title category">
+      <i class="icon-categories"></i> 分类：<%= page.category %>
+    </h2>
+    <div class="category-meta">
+      <span class="category-count"><%= page.posts.length %> 篇文章</span>
+    </div>
+  </header>
+
+  <div class="category-description">
+    <!-- 分类导航 -->
+    <div class="category-nav" style="margin-bottom: 2rem;">
+      <% site.categories.sort('name').map(function(category){ %>
+        <a href="<%- url_for(category.path) %>" 
+           class="category-nav-item <%= category.name === page.category ? 'active' : '' %>">
+          <i class="icon-folder"></i> <%= category.name %>
+          <small>(<%= category.posts.length %>)</small>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="archive">
+    <% page.posts.sort('-date').map(function(post){ %>
+      <div class="archive-item">
+        <div class="archive-post">
+          <time datetime="<%= post.date.toDate().toISOString() %>">
+            <a href="<%- url_for(post.path) %>"><%= post.date.format(config.date_format) %></a>
+          </time>
+          <% if (post.link){ %>
+            <% if (post.title){ %>
+            <h4 class="archive-title"><a href="<%- url_for(post.link) %>" target="_blank"><span><%= post.title %></span></a></h4>
+            <% } else { %>
+            <h4 class="archive-title"><a href="<%- url_for(post.link) %>" target="_blank"><span><%= post.link %></span></a></h4>
+            <% } %>
+          <% } else { %>
+            <h4 class="archive-title"><a href="<%- url_for(post.path) %>"><span><%= post.title %></span></a></h4>
+          <% } %>
+        </div>
+      </div>
+    <% }) %>
+    
+    <%- partial('components/pagination') %>
+  </div>
+</article> 

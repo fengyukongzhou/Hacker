@@ -200,6 +200,10 @@
     <%- partial('components/footer') %>
     <%- partial('components/googleanalytics') %>
     <%- partial('components/baiduanalytics') %>
+    
+    <% if (page.tag || page.category) { %>
+    <script src="<%- url_for('/js/tag-category.js') %>"></script>
+    <% } %>
   </div>
 </div>
 </body>

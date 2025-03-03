@@ -15,12 +15,14 @@ article
   a
     color $hackerRed
 
-  .article-content
-    em, .article-excerpt em, .article-content em
+  .article-content, .article-excerpt
+    /* 中文内容使用楷体（不倾斜） */
+    em:lang(zh), em:lang(zh-CN), em:lang(zh-TW)
       font-style: normal !important
       font-family: "楷体", "KaiTi", "楷体_GB2312", "STKaiti", "华文楷体", serif !important
-      
-    em:lang(en), .article-excerpt em:lang(en), .article-content em:lang(en)
+    
+    /* 英文内容使用斜体 */
+    em:lang(en), em:not([lang])
       font-style: italic !important
       font-family: "Times New Roman", Times, serif !important
 

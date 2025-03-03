@@ -579,3 +579,75 @@ table {
         border-color var(--link-color) !important
         color #fff !important
 
+// 脚注样式
+.footnote-ref {
+  display: inline-flex
+  align-items: center
+  font-size: 0.85em
+  position: relative
+  top: -0.4em
+  text-decoration: none
+  color: $hackerRed
+  transition: all 0.3s ease
+  font-weight: bold
+  
+  &::before {
+    content: none
+  }
+  
+  &::after {
+    content: none
+  }
+  
+  a {
+    color: inherit
+    text-decoration: none
+    
+    &:hover {
+      color: darken($hackerRed, 10%)
+      text-decoration: none
+    }
+  }
+}
+
+[data-theme="dark"] .footnote-ref {
+  color: $hackerRed
+  
+  a {
+    color: inherit
+    
+    &:hover {
+      color: lighten($hackerRed, 10%)
+    }
+  }
+}
+
+.footnotes {
+  margin-top: 40px
+  padding-top: 20px
+  border-top: 1px solid var(--border-color)
+  font-size: 0.9em
+  color: var(--text-color)
+  
+  ol {
+    padding-left: 20px
+  }
+  
+  .footnote-item {
+    margin-bottom: 10px
+    p {
+      margin: 0
+      display: inline
+    }
+  }
+  
+  .footnote-backref {
+    margin-left: 5px
+    color: var(--link-color)
+    text-decoration: none
+    &:hover {
+      text-decoration: underline
+    }
+  }
+}
+

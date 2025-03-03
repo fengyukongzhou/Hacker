@@ -204,6 +204,10 @@
     <% if (page.tag || page.category) { %>
     <script src="<%- url_for('/js/tag-category.js') %>"></script>
     <% } %>
+    
+    <% if (is_post()) { %>
+    <script src="<%- url_for('/js/footnote-popup.js') %>"></script>
+    <% } %>
   </div>
 </div>
 </body>

@@ -408,3 +408,116 @@ article
           
         &:before
           color: #fff
+
+// 脚注弹出层样式
+.footnote-popup
+  position: absolute
+  width: 300px
+  background: var(--card-bg)
+  border: 1px solid #ddd
+  border-radius: 3px
+  padding: 8px 10px
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1)
+  z-index: 1000
+  font-size: 14px
+  line-height: 1.5
+  color: var(--text-color)
+  max-height: 200px
+  overflow-y: auto
+  transition: all 0.2s ease-in-out
+  
+  &::-webkit-scrollbar
+    width: 4px
+    
+  &::-webkit-scrollbar-track
+    background: transparent
+    
+  &::-webkit-scrollbar-thumb
+    background: var(--border-color)
+    border-radius: 2px
+    
+    &:hover
+      background: #bbb
+
+  p
+    margin: 0.3rem 0
+    
+  a
+    color: var(--link-color)
+    
+    &:hover
+      color: $hackerRed
+      text-decoration: underline
+
+// 脚注引用样式优化
+.footnote-ref
+  display: inline-flex
+  align-items: center
+  font-size: 0.85em
+  line-height: 1
+  margin: 0 1px
+  text-decoration: none
+  color: $hackerRed
+  transition: all 0.2s ease
+  position: relative
+  top: -0.4em
+  font-weight: bold
+  
+  &::before
+    content: none
+  
+  &::after
+    content: none
+  
+  a
+    color: inherit
+    text-decoration: none
+    
+    &:hover
+      color: darken($hackerRed, 10%)
+      text-decoration: none
+
+// 脚注区域样式优化
+.footnotes
+  margin-top: 40px
+  padding-top: 20px
+  border-top: 1px solid var(--border-color)
+  font-size: 0.9em
+  color: var(--text-color)
+  
+  &:before, &:after
+    display: none
+  
+  hr
+    display: none
+  
+  ol
+    padding-left: 20px
+    
+  li
+    margin-bottom: 8px
+    
+  .footnote-backref
+    margin-left: 5px
+    color: $hackerRed
+    text-decoration: none
+    transition: all 0.2s ease
+    
+    &:hover
+      color: darken($hackerRed, 20%)
+      transform: translateX(-2px)
+
+// 暗色模式下的脚注样式
+[data-theme="dark"]
+  .footnote-popup
+    background: var(--card-bg)
+    border-color: #444
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)
+  
+  .footnote-ref
+    color: $hackerRed
+    border-color: $hackerRed
+    
+    &:hover
+      color: white
+      background-color: $hackerRed

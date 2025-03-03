@@ -1,0 +1,38 @@
+<article>
+  <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= page.title || config.title %></h2>
+
+  <!-- 标签图表容器 -->
+  <div id="tagsChart" style="width: 100%; height: 400px; overflow-x: auto; overflow-y: hidden; margin-bottom: 3rem;"></div>
+
+  <div class="archive" style="margin-top: 2rem;">
+    <% site.tags.sort('name').map(function(tag){  %>
+    <div class="archive-group" id="tag-<%= tag.name %>">
+      <h3 class="group-title">
+        <i class="icon-tags"></i>
+        <%= tag.name %>
+        <small>(<%= tag.posts.length %>)</small>
+      </h3>
+      <% tag.posts.sort('-date').map(function(item){  %>
+        <div class="archive-item">
+          <div class="archive-post">
+            <time datetime="<%= item.date.toDate().toISOString() %>">
+              <a href="<%- url_for(item.path) %>"><%= item.date.format(config.date_format) %></a>
+            </time>
+            <% if (item.link){ %>
+              <% if (item.title){ %>
+              <h4 class="archive-title"><a href="<%- url_for(item.link) %>" target="_blank"><span><%= item.title %></span></a></h4>
+              <% } else { %>
+              <h4 class="archive-title"><a href="<%- url_for(item.link) %>" target="_blank"><span><%= item.link %></span></a></h4>
+              <% } %>
+            <% } else { %>
+              <h4 class="archive-title"><a href="<%- url_for(item.path) %>"><span><%= item.title %></span></a></h4>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    <% }) %>
+
+    <%- partial('components/pagination') %>
+  </div>
+</article>

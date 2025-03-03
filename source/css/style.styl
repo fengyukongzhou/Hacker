@@ -1,0 +1,580 @@
+@import "base/normalize.css"
+@import "fonts/fonts.styl"
+@import "components/layout"
+@import "components/header"
+@import "components/article"
+@import "components/archive"
+@import "components/tags"
+@import "components/categories"
+@import "components/pagination"
+@import "components/footer"
+@import "components/icon"
+@import "components/syntax"
+@import "components/responsive"
+@import "components/like-button"
+
+// 定义亮色主题变量（默认主题）
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --heading-color: #222;
+  --link-color: #57A;
+  --link-hover-color: #444;
+  --border-color: #ddd;
+  --code-bg: #f6f6f6;
+  --blockquote-bg: #f9f9f9;
+  --blockquote-border: #ddd;
+  --theme-color: #57A;
+  --header-bg: #fff;
+  --footer-bg: #fff;
+  --main-bg: #fff;
+  --card-bg: #fff;
+  --tag-bg: #f2f2f2;
+  --code-text: #333;
+  --math-color: #333;
+  --toc-bg: #fff;
+  --toc-text: #222;
+  --toc-border: #f0f0f0;
+  --toc-toggle-bg: #fff;
+}
+
+// 全局暗色主题样式
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --heading-color: #fff;
+  --link-color: #88b0ff;
+  --link-hover-color: #aaa;
+  --border-color: #333;
+  --code-bg: #2d2d2d;
+  --blockquote-bg: #2a2a2a;
+  --blockquote-border: #444;
+  --theme-color: #88b0ff;
+  --header-bg: #121212;
+  --footer-bg: #121212;
+  --main-bg: #121212;
+  --card-bg: #121212;
+  --tag-bg: #333;
+  --code-text: #fff;
+  --math-color: #fff;
+  --toc-bg: #2d2d2d;
+  --toc-text: #fff;
+  --toc-border: #444;
+  --toc-toggle-bg: #2d2d2d;
+  --archive-title-color: #fff;
+}
+
+[data-theme="dark"] img {
+  opacity: 0.85;
+  filter: brightness(0.85) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+// 基础样式
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.blog {
+  background-color: var(--bg-color);
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+// 移动端去除页边距
+@media screen and (max-width: 768px) {
+  .blog {
+    padding: 0;
+  }
+}
+
+.content {
+  background-color: var(--main-bg);
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 40px;
+}
+
+// 标题样式
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+}
+
+// 数学公式样式
+.katex, .MathJax {
+  color: var(--math-color);
+}
+
+// LaTeX 公式容器样式
+.katex-display, .MathJax_Display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5em 0;
+  margin: 0.5em 0;
+}
+
+// 确保公式不会被截断
+.katex-display > .katex, .MathJax_Display > .MathJax {
+  white-space: nowrap;
+  max-width: none;
+  display: inline-block;
+}
+
+// 移动端优化
+@media screen and (max-width: 768px) {
+  .katex-display, .MathJax_Display {
+    position: relative;
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  [data-theme="dark"] {
+    .katex-display, .MathJax_Display {
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+
+// 文章内容区域
+.post-content {
+  color: var(--text-color);
+  
+  p, li {
+    color: var(--text-color);
+  }
+  
+  strong, em {
+    color: var(--heading-color);
+  }
+}
+
+.site-main {
+  background-color: var(--main-bg);
+}
+
+.post {
+  background-color: var(--main-bg);
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+.header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+pre, code {
+  background: var(--code-bg);
+  color: var(--code-text);
+}
+
+blockquote {
+  background: var(--blockquote-bg);
+  border-left: 4px solid var(--blockquote-border);
+  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+}
+
+// 标签和分类样式
+.tag, .category-list-item {
+  background: var(--tag-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// 分页样式
+.pagination {
+  a, span {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: var(--tag-bg);
+    }
+  }
+}
+
+// 移动端分页样式优化
+@media screen and (max-width: 768px) {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    
+    a, span {
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
+      &:hover, &:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      
+      &.current {
+        background: var(--theme-color);
+        color: #fff;
+        border-color: var(--theme-color);
+      }
+    }
+  }
+  
+  // 暗色模式下的分页样式
+  [data-theme="dark"] .pagination {
+    a, span {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border-color: var(--border-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      
+      &:hover, &:active {
+        background: var(--tag-bg);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+      
+      &.current {
+        background: var(--theme-color);
+        color: #fff;
+        border-color: var(--theme-color);
+      }
+    }
+  }
+}
+
+// 代码块相关样式
+figure.highlight {
+  background: var(--code-bg);
+  border-color: var(--border-color);
+  
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+  }
+  
+  .line {
+    color: var(--code-text);
+  }
+}
+
+// 表格样式
+table {
+  border-color: var(--border-color);
+  
+  th, td {
+    border-color: var(--border-color);
+  }
+  
+  thead {
+    background: var(--tag-bg);
+  }
+}
+
+// 在移动端时强制应用暗色主题的样式
+@media screen and (max-width: 768px) {
+  [data-theme="dark"] .post-content,
+  [data-theme="dark"] .article-content,
+  [data-theme="dark"] .post-content p,
+  [data-theme="dark"] .article-content p,
+  [data-theme="dark"] .post-content li,
+  [data-theme="dark"] .article-content li {
+    color: var(--text-color);
+  }
+
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6,
+  [data-theme="dark"] .post-title,
+  [data-theme="dark"] .article-title {
+    color: var(--heading-color);
+  }
+
+  // 首页标题暗色模式
+  [data-theme="dark"] .header {
+    .blog-title .logo {
+      color: var(--heading-color);
+    }
+    
+    .subtitle {
+      color: var(--text-color);
+    }
+  }
+
+  [data-theme="dark"] .blog-title {
+    color: var(--heading-color);
+  }
+
+  // 主页文章标题暗色模式
+  [data-theme="dark"] .post-title,
+  [data-theme="dark"] .article-title,
+  [data-theme="dark"] .post-title a,
+  [data-theme="dark"] .article-title a,
+  [data-theme="dark"] .posts-list .post-title,
+  [data-theme="dark"] .posts-list .article-title {
+    color: var(--heading-color) !important;
+  }
+
+  // 确保文章列表中的所有标题都是白色
+  [data-theme="dark"] .posts-loop .post-title,
+  [data-theme="dark"] .posts-loop .article-title {
+    color: var(--heading-color) !important;
+  }
+
+  // 确保链接标题的悬停状态也保持白色
+  [data-theme="dark"] .post-title a:hover,
+  [data-theme="dark"] .article-title a:hover {
+    color: #fff !important;
+  }
+}
+
+// 主题切换按钮样式
+.theme-toggle {
+  display: flex;  // 默认显示
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--theme-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// 暗色模式全局样式
+[data-theme="dark"] {
+  .blog,
+  .content,
+  .site-main,
+  .post {
+    background-color: var(--main-bg);
+  }
+
+  .header {
+    background-color: var(--header-bg);
+    border-color: var(--border-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    border-color: var(--border-color);
+  }
+
+  // 文章内容样式
+  .post-content,
+  .article-content {
+    color: var(--text-color);
+    
+    p, li, strong, em {
+      color: var(--text-color);
+    }
+  }
+
+  // 标题样式
+  .blog-title .logo {
+    color: var(--heading-color);
+  }
+  
+  .subtitle {
+    color: var(--text-color);
+  }
+
+  .blog-title {
+    color: var(--heading-color);
+  }
+
+  // 文章标题样式
+  .post-title,
+  .article-title,
+  .post-title a,
+  .article-title a,
+  .posts-list .post-title,
+  .posts-list .article-title {
+    color: var(--heading-color) !important;
+  }
+
+  .posts-loop .post-title,
+  .posts-loop .article-title {
+    color: var(--heading-color) !important;
+  }
+
+  .post-title a:hover,
+  .article-title a:hover {
+    color: #fff !important;
+  }
+
+  // 确保所有段落文字为白色
+  p, li {
+    color: var(--text-color) !important;
+  }
+
+  // 文章列表标题样式
+  .posts-list,
+  .archive-post,
+  .category-list {
+    .post-title,
+    .archive-title,
+    .category-title {
+      color: #fff !important;
+      
+      a {
+        color: #fff !important;
+        
+        &:hover {
+          color: var(--link-color) !important;
+        }
+      }
+    }
+    
+    time,
+    .post-time,
+    .archive-date {
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+  }
+
+  // 确保所有标题文字为白色
+  h1, h2, h3, h4, h5, h6,
+  .post-title,
+  .archive-title,
+  .category-title,
+  .tag-title,
+  .archive-year-title {
+    color: #fff !important;
+  }
+
+  // 确保所有链接标题在悬停时的颜色
+  a:hover {
+    color: #fff !important;
+  }
+}
+
+[data-theme="dark"] .blog,
+[data-theme="dark"] .content,
+[data-theme="dark"] .site-main,
+[data-theme="dark"] .post {
+  background-color: #121212 !important;
+}
+
+[data-theme="dark"] .header {
+  background-color: #121212 !important;
+  border-color: #333;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #121212 !important;
+  border-color: #333;
+}
+
+// 首页标题暗色模式
+[data-theme="dark"] .header {
+  .blog-title .logo {
+    color: var(--heading-color);
+  }
+  
+  .subtitle {
+    color: var(--text-color);
+  }
+}
+
+[data-theme="dark"] .blog-title {
+  color: var(--heading-color);
+}
+
+// 主页文章标题暗色模式
+[data-theme="dark"] .post-title,
+[data-theme="dark"] .article-title,
+[data-theme="dark"] .post-title a,
+[data-theme="dark"] .article-title a,
+[data-theme="dark"] .posts-list .post-title,
+[data-theme="dark"] .posts-list .article-title {
+  color: var(--heading-color) !important;
+}
+
+// 确保文章列表中的所有标题都是白色
+[data-theme="dark"] .posts-loop .post-title,
+[data-theme="dark"] .posts-loop .article-title {
+  color: var(--heading-color) !important;
+}
+
+// 确保链接标题的悬停状态也保持白色
+[data-theme="dark"] .post-title a:hover,
+[data-theme="dark"] .article-title a:hover {
+  color: #fff !important;
+}
+
+// 全局标签样式
+.post-tags
+  a
+    &:hover
+      background-color $hackerRed !important
+      border-color $hackerRed !important
+      color #fff !important
+
+[data-theme="dark"]
+  .post-tags
+    a
+      &:hover
+        background-color var(--link-color) !important
+        border-color var(--link-color) !important
+        color #fff !important
+

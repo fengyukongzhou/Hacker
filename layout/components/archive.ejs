@@ -1,0 +1,63 @@
+<%
+var title = '';
+if (page.category) title = page.category;
+if (page.tag) title = page.tag;
+if (page.archive){
+  if (page.year) title = page.year + (page.month ? '/' + page.month : '');
+  else title = __('archive_a');
+}
+
+// 按年份对文章进行分组
+var postsByYear = {};
+site.posts.sort('date', -1).each(function(item){
+  var year = item.date.year();
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(item);
+});
+
+// 获取年份并排序
+var years = Object.keys(postsByYear).sort(function(a, b){
+  return b - a;
+});
+%>
+
+<article>
+  <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= title %></h2>
+
+  <!-- 热力图容器 -->
+  <div class="heatmap-container" style="margin: 30px 0;">
+    <div id="heatmapChart" style="width: 100%; height: 200px; overflow-x: auto; overflow-y: hidden;"></div>
+  </div>
+
+  <div class="archive">
+    <% years.forEach(function(year){ %>
+    <div class="archive-group">
+      <h3 class="group-title">
+        <i class="icon-calendar"></i>
+        <%= year %>
+        <small>(<%= postsByYear[year].length %>)</small>
+      </h3>
+      <% postsByYear[year].forEach(function(item){ %>
+        <div class="archive-item">
+          <div class="archive-post">
+            <time datetime="<%= item.date.toDate().toISOString() %>">
+              <a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a>
+            </time>
+            <% if (item.link){ %>
+              <% if (item.title){ %>
+              <h4 class="archive-title"><a href="<%- item.link %>" target="_blank"><span><%= item.title %></span></a></h4>
+              <% } else { %>
+              <h4 class="archive-title"><a href="<%- item.link %>" target="_blank"><span><%= item.link %></span></a></h4>
+              <% } %>
+            <% } else { %>
+              <h4 class="archive-title"><a href="<%- config.root %><%- item.path %>"><span><%= item.title %></span></a></h4>
+            <% } %>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <% }); %>
+  </div>
+</article>

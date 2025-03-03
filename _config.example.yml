@@ -1,0 +1,89 @@
+# 导航菜单配置
+menu:
+  Home: /
+  Archives: /archives
+  Categories: /categories
+  Tags: /tags
+
+# 网站图标配置
+favicon:
+  enable: true
+  icon: /favicon_io/favicon.ico     # 基础图标
+  apple_touch_icon: /favicon_io/apple-touch-icon.png  # iOS设备图标
+  android_chrome_icon: /favicon_io/android-chrome-192x192.png  # Android Chrome图标
+  manifest: /favicon_io/site.webmanifest  # PWA应用配置文件
+
+# LeanCloud 点赞功能配置
+# 使用说明：
+# 1. 请先在 LeanCloud 官网注册账号：https://www.leancloud.cn/
+# 2. 创建应用后，在应用设置中找到以下信息
+# 3. 将信息填入下方对应位置
+like_button:
+  enable: false  # 是否启用点赞功能，true/false
+  appId: ""      # 你的 LeanCloud 应用 AppID
+  appKey: ""     # 你的 LeanCloud 应用 AppKey
+  serverURL: ""  # 你的 LeanCloud 服务器地址，如：https://xxx.lc-cn-n1-shared.com
+
+# gitment评论配置
+gitment: false
+gitment_owner:     # 你的 GitHub ID
+gitment_repo:      # 存储评论的 repo
+gitment_client_id: # GitHub OAuth App 的 client ID
+gitment_client_secret: # GitHub OAuth App 的 client secret
+
+# gitalk评论配置
+gitalk: false
+gitalk_owner:     # 你的 GitHub ID
+gitalk_admin: []  # 管理员 GitHub ID
+gitalk_repo:      # 存储评论的 repo
+gitalk_client_id: # GitHub OAuth App 的 client ID
+gitalk_client_secret: # GitHub OAuth App 的 client secret
+
+# valine评论配置
+valine: false
+leancloud_id:  # LeanCloud 应用 AppID
+leancloud_key: # LeanCloud 应用 AppKey
+
+# disqus评论配置
+disqus: false
+disqus_shortname: # 你的 Disqus shortname
+
+# utterances评论配置
+utterances: false
+utterances_repo: # GitHub 仓库名，格式：owner/repo
+
+# livere评论配置
+livere: false
+livere_data_uid: # 来必力 UID
+
+# giscus评论配置
+giscus: false
+data_repo:         # GitHub 仓库名
+data_repo_id:      # 仓库 ID
+data_category:     # 讨论分类名
+data_category_id:  # 讨论分类 ID
+data_mapping: pathname  # 页面和讨论之间的映射关系
+data_strict: 0    # 是否启用严格匹配
+data_reactions_enabled: 0  # 是否启用反应
+data_emit_metadata: 0      # 是否发送元数据
+data_input_position: top   # 评论框位置
+data_lang: zh-CN          # 语言设置
+
+# Google Analytics配置
+googleTrackId: # Google Analytics 跟踪 ID
+
+# 百度统计配置
+baiduTrackId: # 百度统计 跟踪 ID
+
+# 是否在主页文章摘要中显示"阅读更多"按钮
+read_more_btn: false
+
+# MathJax 数学公式支持
+mathjax:
+  enable: true   # 是否启用数学公式支持
+  cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+# 目录（TOC）配置
+toc:
+  enable: true   # 是否默认启用目录
+  number: true   # 是否显示目录编号 

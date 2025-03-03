@@ -25,7 +25,7 @@
 
 ### 前置要求
 
-1. 安装必需的插件：
+安装必需的插件：
 ```bash
 # 安装 hexo-graph 插件用于数据可视化
 npm install hexo-graph

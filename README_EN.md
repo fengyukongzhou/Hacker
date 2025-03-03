@@ -26,7 +26,7 @@ A simple, elegant Hexo theme focused on writing and reading experience. Demo: [f
 
 ### Prerequisites
 
-1. Install required plugins:
+Install required plugins:
 ```bash
 # Install hexo-graph plugin for data visualization
 npm install hexo-graph

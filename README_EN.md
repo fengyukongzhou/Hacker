@@ -153,34 +153,6 @@ like_button:
   serverURL: your-server-url
 ```
 
-## Usage Guide
-
-### Italic Style for Chinese and English
-
-This theme provides elegant typography for mixed Chinese and English text using Markdown's `_` and `*` markers:
-
-1. Using underscores for English text:
-```markdown
-这是一段混合了 _English_ 的文本  -> English will be in italic
-```
-
-2. Using asterisks for Chinese text:
-```markdown
-This is text with *中文* content  -> 中文 will be in Kai font
-```
-
-3. Mixed content examples:
-```markdown
-这是一段混合了 _English_ 和 *中文* 的文本。
-The quick brown fox *跳过* 了 _lazy_ 的狗。
-```
-
-This design follows these principles:
-- Text wrapped in `_underscores_` will be styled in English italic
-- Text wrapped in `*asterisks*` will be styled in Chinese Kai font
-- Maintains Markdown's simplicity with no additional markup needed
-- Creates elegant typography for mixed Chinese and English text
-
 ## Contributing
 
 Issues and Pull Requests are welcome.

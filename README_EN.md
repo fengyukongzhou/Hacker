@@ -21,6 +21,7 @@ A simple, elegant Hexo theme focused on writing and reading experience. Demo: [f
 - 📝 MathJax support
 - 📈 Integrated hexo-graph data visualization
 - 🖋 Elegant typography with special handling for Chinese/English italics
+- 📌 Beautiful blockquote design with different citation styles for Chinese and English
 
 ## Quick Start
 
@@ -152,6 +153,55 @@ like_button:
   appKey: your-app-key
   serverURL: your-server-url
 ```
+
+## Usage Guide
+
+### Blockquotes
+
+The theme provides beautifully designed blockquotes with support for different citation styles in Chinese and English environments.
+
+#### Basic Usage
+
+```markdown
+> This is a quoted text.
+> 
+> This is the second paragraph of the quote.
+```
+
+#### Adding Citation Sources
+
+Blockquotes support adding citation sources, which will be displayed at the bottom right of the blockquote. The dash style will automatically adapt based on the language:
+
+**English Environment** (using single em dash):
+
+```markdown
+> This is an English quote.
+> 
+> <footer lang="en">Source</footer>
+```
+
+**Chinese Environment** (using double em dash):
+
+```markdown
+> 这是一段中文引用。
+> 
+> <footer lang="zh">引用来源</footer>
+```
+
+You can also use the `<cite>` tag instead of the `<footer>` tag:
+
+```markdown
+> This is a quoted text.
+> 
+> <cite lang="en">Source</cite>
+```
+
+#### Blockquote Style Features
+
+- Beautiful visual design, including quotation mark decoration and gradient bottom border
+- Hover effect, where the blockquote slightly rises and increases shadow
+- Dark mode compatible, with excellent display in different themes
+- Automatically adjusts dash style based on language environment: English uses single em dash (—), Chinese uses double em dash (——)
 
 ## Contributing
 

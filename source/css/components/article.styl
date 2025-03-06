@@ -37,12 +37,72 @@ article
     margin-left -75px
 
   blockquote
-    margin 0.2rem 0
-    padding 0.2rem 1rem
-    line-height 2rem
+    margin 1.5rem 0
+    padding 1.2rem 1.5rem
+    line-height 1.8
     border-left 4px solid $hackerRed
-    background-color rgba(0, 0, 0, 0.03)
-    border-radius 0 4px 4px 0
+    background-color rgba(240, 56, 56, 0.03)
+    border-radius 0 8px 8px 0
+    box-shadow 0 2px 8px rgba(0, 0, 0, 0.04)
+    position relative
+    overflow hidden
+    transition all 0.3s ease
+    
+    &:before
+      content '"'
+      position absolute
+      top 8px
+      left 12px
+      font-size 3.5rem
+      color rgba(240, 56, 56, 0.1)
+      font-family serif
+      line-height 1
+      z-index 0
+    
+    &:after
+      content ''
+      position absolute
+      bottom 0
+      left 0
+      width 100%
+      height 3px
+      background linear-gradient(90deg, $hackerRed, transparent)
+      opacity 0.3
+    
+    p
+      position relative
+      margin 0.5rem 0
+      z-index 1
+      
+    p:first-child
+      margin-top 0
+      
+    p:last-child
+      margin-bottom 0
+    
+    cite, footer
+      display block
+      margin-top 10px
+      font-size 0.9em
+      color $hackerGray
+      font-style italic
+      text-align right
+      
+      &:before
+        content '— '
+      
+      &:lang(zh), &:lang(zh-CN), &:lang(zh-TW)
+        &:before
+          content '—— '
+      
+      &:lang(en), &:not([lang])
+        &:before
+          content '— '
+
+    &:hover
+      transform translateY(-2px)
+      box-shadow 0 4px 12px rgba(0, 0, 0, 0.08)
+      background-color rgba(240, 56, 56, 0.05)
 
   .article-title
     position relative
@@ -94,7 +154,15 @@ article
 
     p
       margin 2rem 0
-      line-height 1.8
+      line-height 2.0
+      
+    ul, ol
+      margin 2rem 0
+      padding-left 2rem
+      
+      li
+        margin-bottom 1rem
+        line-height 1.7
 
     h2
       margin-top 3.5rem
@@ -248,15 +316,24 @@ article
   position: fixed
   right: 0
   top: 80px
-  width: 260px
+  width: 280px
   background: var(--toc-bg)
-  padding: 15px 15px 15px 25px
-  box-shadow: 0 0 10px rgba(0,0,0,0.1)
+  padding: 20px 20px 20px 25px
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08)
   max-height: calc(100vh - 100px)
   overflow-y: auto
   transition: all 0.3s ease-in-out
   z-index: 100
-  border-radius: 4px 0 0 4px
+  border-radius: 8px 0 0 8px
+  animation: toc-slide-in 0.3s ease-out
+  
+  @keyframes toc-slide-in
+    0%
+      opacity: 0
+      transform: translateX(20px)
+    100%
+      opacity: 1
+      transform: translateX(0)
   
   &::-webkit-scrollbar
     width: 4px
@@ -265,11 +342,11 @@ article
     background: transparent
     
   &::-webkit-scrollbar-thumb
-    background: var(--border-color)
-    border-radius: 2px
+    background: rgba(158, 158, 158, 0.6)
+    border-radius: 4px
     
     &:hover
-      background: #bbb
+      background: rgba(158, 158, 158, 0.8)
   
   &.toc-hidden
     transform: translateX(calc(100% - 25px))
@@ -284,8 +361,8 @@ article
     width: 25px
     height: 50px
     background: var(--toc-toggle-bg)
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1)
-    border-radius: 4px 0 0 4px
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1)
+    border-radius: 6px 0 0 6px
     cursor: pointer
     display: flex
     align-items: center
@@ -297,7 +374,7 @@ article
       width: 28px
       
       i
-        color: #f03838
+        color: $hackerRed
     
     i
       font-size: 16px
@@ -310,12 +387,7 @@ article
 
   .post-toc-content
     h2
-      font-size: 16px
-      margin-bottom: 12px
-      padding-bottom: 8px
-      border-bottom: 2px solid var(--toc-border)
-      color: var(--toc-text)
-      font-weight: 600
+      display: none
       
     ol
       counter-reset: section
@@ -324,15 +396,14 @@ article
       padding-left: 0
       
       li
-        padding-left: 18px
+        padding-left: 0
         line-height: 1.6
-        margin-bottom: 6px
+        margin-bottom: 8px
         position: relative
         transition: all 0.2s ease-in-out
         
         &:before
-          counter-increment: section
-          content: counter(section) "."
+          content: ""
           position: absolute
           left: 0
           color: var(--text-color)
@@ -341,50 +412,116 @@ article
         
         ol
           counter-reset: subsection
-          margin-top: 6px
-          padding-left: 12px
+          margin-top: 8px
+          padding-left: 15px
+          position: relative
+          
+          &:before
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            bottom: 8px
+            width: 0
+            background: rgba(158, 158, 158, 0.2)
           
           li
             &:before
-              counter-increment: subsection
-              content: counter(section) "." counter(subsection)
+              content: ""
               font-size: 11px
               
             ol
               counter-reset: subsubsection
+              padding-left: 15px
+              
+              &:before
+                content: ""
+                position: absolute
+                left: 0
+                top: 0
+                bottom: 8px
+                width: 0
+                background: rgba(158, 158, 158, 0.2)
               
               li:before
-                counter-increment: subsubsection
-                content: counter(section) "." counter(subsection) "." counter(subsubsection)
+                content: ""
                 font-size: 11px
+    
+    .toc-item-icon
+      display: inline-block
+      width: 18px
+      height: 18px
+      margin-right: 6px
+      vertical-align: middle
+      opacity: 0.8
+      transition: all 0.2s ease
+      
+      &.emoji
+        font-size: 16px
+        line-height: 1
+        margin-top: -2px
+      
+      &.img
+        width: 16px
+        height: 16px
+        object-fit: contain
     
     .toc-link
       color: var(--text-color)
       text-decoration: none
-      font-size: 13px
+      font-size: 14px
       display: block
-      margin-left: 15px
+      margin-left: 0
       position: relative
       transition: all 0.2s ease
+      padding: 4px 8px
+      border-radius: 4px
       
       &:hover
-        color: #f03838
+        color: $hackerRed
         transform: translateX(3px)
+        background: rgba(240, 56, 56, 0.05)
+        box-shadow: 0 2px 8px rgba(240, 56, 56, 0.08)
       
       &.active
-        color: #f03838
+        color: $hackerRed
         font-weight: 500
+        background: rgba(240, 56, 56, 0.08)
+        box-shadow: 0 2px 8px rgba(240, 56, 56, 0.12)
+        animation: toc-pulse 2s infinite
         
         &:before
           content: ""
           position: absolute
-          left: -15px
+          left: -10px
           top: 50%
           transform: translateY(-50%)
           width: 3px
-          height: 14px
-          background: #f03838
-          border-radius: 1px
+          height: 16px
+          background: $hackerRed
+          border-radius: 2px
+
+    ol > li
+      position: relative
+      
+      &:before
+        content: ""
+        position: absolute
+        left: -4px
+        top: 10px
+        width: 6px
+        height: 6px
+        border-radius: 50%
+        background: rgba(240, 56, 56, 0.6)
+        opacity: 0
+        transition: all 0.2s ease
+      
+      &:hover:before
+        opacity: 1
+      
+      &.active:before
+        opacity: 1
+        background: $hackerRed
 
 // 暗色模式样式
 [data-theme="dark"]
@@ -405,8 +542,31 @@ article
         background-color rgba(255, 255, 255, 0.1)
 
       blockquote
-        background-color rgba(255, 255, 255, 0.05)
+        background-color rgba(240, 56, 56, 0.08)
+        box-shadow 0 2px 8px rgba(0, 0, 0, 0.15)
         
+        &:before
+          color rgba(240, 56, 56, 0.15)
+        
+        &:after
+          background linear-gradient(90deg, $hackerRed, transparent)
+          opacity 0.4
+        
+        cite, footer
+          color rgba(255, 255, 255, 0.7)
+          
+          &:lang(zh), &:lang(zh-CN), &:lang(zh-TW)
+            &:before
+              content '—— '
+          
+          &:lang(en), &:not([lang])
+            &:before
+              content '— '
+        
+        &:hover
+          background-color rgba(240, 56, 56, 0.12)
+          box-shadow 0 4px 12px rgba(0, 0, 0, 0.25)
+
     .post-tags
       a
         color: #fff
@@ -419,6 +579,40 @@ article
           
         &:before
           color: #fff
+
+  // 暗色模式下的目录面板样式
+  .post-toc
+    background: var(--card-bg)
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2)
+    
+    &::-webkit-scrollbar-thumb
+      background: rgba(158, 158, 158, 0.4)
+      
+      &:hover
+        background: rgba(158, 158, 158, 0.6)
+    
+    .toc-toggle
+      background: var(--card-bg)
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2)
+    
+    .post-toc-content
+      h2
+        display: none
+      
+      ol li ol:before, 
+      ol li ol ol:before
+        background: rgba(158, 158, 158, 0.15)
+        width: 0
+      
+      .toc-link
+        &:hover
+          background: rgba(240, 56, 56, 0.1)
+        
+        &.active
+          background: rgba(240, 56, 56, 0.15)
+      
+      ol > li:before
+        background: rgba(240, 56, 56, 0.5)
 
 // 脚注弹出层样式
 .footnote-popup
@@ -499,13 +693,13 @@ article
 .footnotes
   position: relative
   margin-top: 60px
-  padding-top: 30px
+  padding-top: 20px
   border-top: 1px solid var(--border-color)
   font-size: 0.95em
   color: var(--text-color)
   
   &:before
-    content: "注释"
+    content: ""
     position: absolute
     top: -12px
     left: 50%
@@ -520,6 +714,7 @@ article
     list-style-type: decimal
     padding-left: 1.5em
     margin-left: 0
+    margin-top: 10px
     
     li
       position: relative
@@ -568,3 +763,11 @@ article
     
     ol li:before
       color: $hackerRed
+
+@keyframes toc-pulse
+  0%
+    box-shadow: 0 2px 8px rgba(240, 56, 56, 0.12)
+  50%
+    box-shadow: 0 2px 12px rgba(240, 56, 56, 0.25)
+  100%
+    box-shadow: 0 2px 8px rgba(240, 56, 56, 0.12)

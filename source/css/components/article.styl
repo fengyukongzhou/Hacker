@@ -424,6 +424,8 @@ article
             background: rgba(158, 158, 158, 0.2)
           
           li
+            margin-bottom: 6px
+            line-height: 1.5
             &:before
               content: ""
               font-size: 11px
@@ -431,6 +433,7 @@ article
             ol
               counter-reset: subsubsection
               padding-left: 15px
+              margin-top: 6px
               
               &:before
                 content: ""
@@ -441,9 +444,12 @@ article
                 width: 0
                 background: rgba(158, 158, 158, 0.2)
               
-              li:before
-                content: ""
-                font-size: 11px
+              li
+                margin-bottom: 4px
+                line-height: 1.4
+                &:before
+                  content: ""
+                  font-size: 11px
     
     .toc-item-icon
       display: inline-block
@@ -493,6 +499,8 @@ article
 
     ol > li
       position: relative
+      margin-bottom: 10px
+      line-height: 1.7
       
       &:before
         content: none
@@ -507,9 +515,14 @@ article
         &.active
           border-left-color: $hackerRed
       
-      ol > li .toc-link
-        font-size: 13px
-        opacity: 0.9
+      ol > li 
+        .toc-link
+          font-size: 13px
+          opacity: 0.9
+        
+        ol > li .toc-link
+          font-size: 12px
+          opacity: 0.85
 
 // 暗色模式样式
 [data-theme="dark"]

@@ -22,6 +22,7 @@ A simple, elegant Hexo theme focused on writing and reading experience. Demo: [f
 - 📈 Integrated hexo-graph data visualization
 - 🖋 Elegant typography with special handling for Chinese/English italics
 - 📌 Beautiful blockquote design with different citation styles for Chinese and English
+- ⬆️ Convenient back-to-top button for enhanced browsing experience
 
 ## Quick Start
 
@@ -154,7 +155,15 @@ like_button:
   serverURL: your-server-url
 ```
 
-## Usage Guide
+### Back to Top Button
+
+The theme includes a convenient back-to-top button that automatically appears when the page is scrolled beyond a certain distance. Clicking it smoothly scrolls back to the top of the page. The button design is consistent with the dark mode toggle button, providing a cohesive visual experience.
+
+- Auto show/hide: Appears when the page is scrolled beyond 300 pixels
+- Smooth scrolling: Smoothly returns to the top of the page when clicked
+- Responsive design: Adapts to various device screens
+- Dark mode compatible: Automatically adapts to dark/light themes
+
 
 ### Blockquotes
 

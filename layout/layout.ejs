@@ -11,7 +11,7 @@
       const savedTheme = localStorage.getItem('darkMode');
       const darkModeEnabled = savedTheme !== null ? savedTheme === 'true' : prefersDark;
       document.documentElement.setAttribute('data-theme', darkModeEnabled ? 'dark' : 'light');
-      const themeToggle = document.querySelector('.theme-toggle');
+      const themeToggle = document.getElementById('theme-toggle');
       if (themeToggle) {
         themeToggle.innerHTML = darkModeEnabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
       }
@@ -22,18 +22,40 @@
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('darkMode', newTheme === 'dark');
-      const themeToggle = document.querySelector('.theme-toggle');
+      const themeToggle = document.getElementById('theme-toggle');
       themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    
+    // 回到顶部功能
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // 控制回到顶部按钮的显示和隐藏
+    function toggleScrollTopButton() {
+      const scrollTopBtn = document.getElementById('scroll-top');
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
     }
 
     // 在页面加载时初始化主题
-    document.addEventListener('DOMContentLoaded', initTheme);
+    document.addEventListener('DOMContentLoaded', function() {
+      initTheme();
+      // 监听滚动事件
+      window.addEventListener('scroll', toggleScrollTopButton);
+    });
 
     // 监听系统主题变化
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (localStorage.getItem('darkMode') === null) {
         document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        const themeToggle = document.querySelector('.theme-toggle');
+        const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
           themeToggle.innerHTML = e.matches ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         }
@@ -159,14 +181,13 @@
     });
   </script>
   <style>
-    #theme-toggle {
+    .floating-btn {
       position: fixed;
       bottom: 20px;
-      right: 20px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: var(--theme-color, #57A);
+      background: var(--theme-color, #f03838);
       color: #fff;
       border: none;
       cursor: pointer;
@@ -179,15 +200,36 @@
       z-index: 1000;
     }
 
-    #theme-toggle:hover {
+    .floating-btn:hover {
       transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    #theme-toggle {
+      right: 20px;
+    }
+    
+    #scroll-top {
+      right: 70px; /* 位于夜间模式按钮旁边 */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+    
+    #scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+<button id="theme-toggle" class="floating-btn" onclick="toggleTheme()" aria-label="切换主题">
   <i class="fas fa-moon"></i>
+</button>
+<button id="scroll-top" class="floating-btn" onclick="scrollToTop()" aria-label="回到顶部">
+  <i class="fas fa-arrow-up"></i>
 </button>
 <div class="blog">
   <div class="content">

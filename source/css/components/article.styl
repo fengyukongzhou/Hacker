@@ -406,12 +406,7 @@ article
         transition: all 0.2s ease-in-out
         
         &:before
-          content: ""
-          position: absolute
-          left: 0
-          color: var(--text-color)
-          font-size: 12px
-          top: 2px
+          content: none
         
         ol
           counter-reset: subsection
@@ -494,37 +489,27 @@ article
         animation: toc-pulse 2s infinite
         
         &:before
-          content: ""
-          position: absolute
-          left: -10px
-          top: 50%
-          transform: translateY(-50%)
-          width: 3px
-          height: 16px
-          background: $hackerRed
-          border-radius: 2px
+          content: none
 
     ol > li
       position: relative
       
       &:before
-        content: ""
-        position: absolute
-        left: -4px
-        top: 10px
-        width: 6px
-        height: 6px
-        border-radius: 50%
-        background: rgba(240, 56, 56, 0.6)
-        opacity: 0
-        transition: all 0.2s ease
+        content: none
       
-      &:hover:before
-        opacity: 1
+      .toc-link
+        padding-left: 12px
+        border-left: 2px solid transparent
+        
+        &:hover
+          border-left-color: rgba(240, 56, 56, 0.4)
+        
+        &.active
+          border-left-color: $hackerRed
       
-      &.active:before
-        opacity: 1
-        background: $hackerRed
+      ol > li .toc-link
+        font-size: 13px
+        opacity: 0.9
 
 // 暗色模式样式
 [data-theme="dark"]

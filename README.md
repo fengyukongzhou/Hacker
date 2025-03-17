@@ -1,77 +1,78 @@
 # Hexo Theme Hacker
 
-> 本主题基于 [CodeDaraW/Hacker](https://github.com/CodeDaraW/Hacker) 进行开发
+> This theme is based on [CodeDaraW/Hacker](https://github.com/CodeDaraW/Hacker)
 
-[English Version](README_EN.md)
+[中文说明](README.md)
 
-一个简洁、优雅的 Hexo 主题，专注于写作与阅读体验。示例网站：[fengyukongzhou.github.io](https://fengyukongzhou.github.io)
+A simple, elegant Hexo theme focused on writing and reading experience. Demo: [fengyukongzhou.github.io](https://fengyukongzhou.github.io)
 
-![Hacker主题预览](preview.png)
+## Preview
+![Hacker Theme Preview](preview.png)
 
-## 特性
+## Features
 
-- 🎨 简约设计，突出内容
-- 📱 响应式布局，支持深色模式
-- 💡 代码高亮支持
-- 📑 文章目录支持
-- ❤️ 文章点赞功能
-- 💬 多评论系统支持
-- 📊 Google Analytics 和百度统计支持
-- 📝 MathJax 数学公式支持
-- 📈 集成 hexo-graph 数据可视化
-- 🖋 优雅的中英文排版，中文斜体自动转换为楷体
-- 📌 精美的引用块设计，支持中英文环境下的不同引用样式
-- ⬆️ 便捷的回到顶部按钮，提升浏览体验
+- 🎨 Minimalist design, content-focused
+- 📱 Responsive layout with dark mode support for mobile devices
+- 💡 Code highlighting support
+- 📑 Article table of contents
+- ❤️ Article like button
+- 💬 Multiple comment systems support
+- 📊 Google Analytics and Baidu Statistics support
+- 📝 MathJax support
+- 📈 Integrated hexo-graph data visualization
+- 🖋 Elegant typography with special handling for Chinese/English italics
+- 📌 Beautiful blockquote design with different citation styles for Chinese and English
+- ⬆️ Convenient back-to-top button for enhanced browsing experience
 
-## 快速开始
+## Quick Start
 
-### 前置要求
+### Prerequisites
 
-安装必需的插件：
+Install required plugins:
 ```bash
-# 安装 hexo-graph 插件用于数据可视化
+# Install hexo-graph plugin for data visualization
 npm install hexo-graph
 
-# 或使用 yarn
+# Or using yarn
 yarn add hexo-graph
 
-# 或使用 pnpm
+# Or using pnpm
 pnpm add hexo-graph
 ```
 
-### 安装
+### Installation
 
 ```bash
 git clone https://github.com/fengyukongzhou/Hacker.git themes/hacker
 ```
 
-### 配置
+### Configuration
 
-1. 修改 Hexo 根目录下的 `_config.yml`：
+1. Modify `_config.yml` in your Hexo root directory:
 ```yaml
 theme: hacker
 ```
 
-2. 参考示例配置文件 `_config.example.yml`，创建并编辑主题配置文件 `_config.yml`：
+2. Create and edit the theme configuration file by referring to `_config.example.yml`:
 ```bash
 cp themes/hacker/_config.example.yml themes/hacker/_config.yml
 ```
 
-3. 根据需要修改主题配置文件 `themes/hacker/_config.yml`
+3. Modify the theme configuration file `themes/hacker/_config.yml` as needed
 
-### 更新主题
+### Update Theme
 
 ```bash
 cd themes/hacker
 git pull
 ```
 
-## 配置说明
+## Configuration Guide
 
-### 基础配置
+### Basic Configuration
 
-#### 导航菜单
-配置网站的导航菜单项，可以自定义添加需要的链接。
+#### Navigation Menu
+Configure the website navigation menu items. You can customize and add the links you need.
 
 ```yaml
 menu:
@@ -81,10 +82,10 @@ menu:
   Tags: /tags
 ```
 
-#### 网站图标
-主题支持完整的网站图标配置，包括各种设备的图标支持。你可以使用 [favicon.io](https://favicon.io/favicon-converter/) 在线生成所需的图标文件。生成后，将所有文件放入 `source/favicon_io` 目录下。
+#### Website Favicon
+The theme supports comprehensive favicon configuration for various devices. You can use [favicon.io](https://favicon.io/favicon-converter/) to generate the required icon files online. After generation, place all files in the `source/favicon_io` directory.
 
-支持的图标文件包括：
+Supported icon files include:
 - android-chrome-192x192.png
 - android-chrome-512x512.png
 - apple-touch-icon.png
@@ -93,7 +94,7 @@ menu:
 - favicon.ico
 - site.webmanifest
 
-配置示例：
+Configuration example:
 ```yaml
 favicon:
   enable: true
@@ -103,15 +104,15 @@ favicon:
   manifest: /favicon_io/site.webmanifest
 ```
 
-#### 阅读更多按钮
-可以控制是否在文章列表中显示"阅读更多"按钮。
+#### Read More Button
+Control whether to display the "Read More" button in the article list.
 
 ```yaml
 read_more_btn: false
 ```
 
-#### 数学公式支持
-启用 MathJax 以支持数学公式的渲染。
+#### MathJax Support
+Enable MathJax to support mathematical formula rendering.
 
 ```yaml
 mathjax:
@@ -119,8 +120,8 @@ mathjax:
   cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 ```
 
-#### 文章目录
-可以配置是否显示文章目录以及目录编号。
+#### Table of Contents
+Configure whether to display article table of contents and numbering.
 
 ```yaml
 toc:
@@ -128,9 +129,9 @@ toc:
   number: true
 ```
 
-### 评论系统
+### Comment Systems
 
-支持多种评论系统：
+Supports multiple comment systems:
 - Gitalk
 - Gitment
 - Valine
@@ -139,13 +140,13 @@ toc:
 - Livere
 - Giscus
 
-### 统计分析
+### Analytics
 
-支持 Google Analytics 和百度统计，在配置文件中填入对应的跟踪 ID 即可。
+Supports Google Analytics and Baidu Statistics. Just fill in the corresponding tracking ID in the configuration file.
 
-### 点赞功能
+### Like Button
 
-基于 LeanCloud 实现的文章点赞功能，需要配置：
+Article like button feature based on LeanCloud, requires configuration:
 ```yaml
 like_button:
   enable: true
@@ -154,41 +155,33 @@ like_button:
   serverURL: your-server-url
 ```
 
-### 回到顶部按钮
+### Back to Top Button
 
-主题内置了便捷的回到顶部按钮，当页面滚动超过一定距离时自动显示，点击后平滑滚动回页面顶部。按钮设计与夜间模式切换按钮保持一致，提供了良好的视觉体验。
+The theme includes a convenient back-to-top button that automatically appears when the page is scrolled beyond a certain distance. Clicking it smoothly scrolls back to the top of the page. The button design is consistent with the dark mode toggle button, providing a cohesive visual experience.
 
-- 自动显示/隐藏：当页面滚动超过 300 像素时显示
-- 平滑滚动：点击后页面平滑回到顶部
-- 响应式设计：适配各种设备屏幕
-- 深色模式兼容：自动适应深色/浅色主题
+- Auto show/hide: Appears when the page is scrolled beyond 300 pixels
+- Smooth scrolling: Smoothly returns to the top of the page when clicked
+- Responsive design: Adapts to various device screens
+- Dark mode compatible: Automatically adapts to dark/light themes
 
 
-### 引用块
+### Blockquotes
 
-主题提供了精美的引用块设计，支持中英文环境下的不同引用样式。
+The theme provides beautifully designed blockquotes with support for different citation styles in Chinese and English environments.
 
-#### 基本用法
-
-```markdown
-> 这是一段引用文字。
-> 
-> 这是引用的第二段。
-```
-
-#### 添加引用来源
-
-引用块支持添加引用来源，会在引用块底部右侧显示，并根据语言环境自动使用不同的破折号样式：
-
-**中文环境**（使用双破折号）：
+#### Basic Usage
 
 ```markdown
-> 这是一段中文引用。
+> This is a quoted text.
 > 
-> <footer lang="zh">引用来源</footer>
+> This is the second paragraph of the quote.
 ```
 
-**英文环境**（使用单破折号）：
+#### Adding Citation Sources
+
+Blockquotes support adding citation sources, which will be displayed at the bottom right of the blockquote. The dash style will automatically adapt based on the language:
+
+**English Environment** (using single em dash):
 
 ```markdown
 > This is an English quote.
@@ -196,25 +189,33 @@ like_button:
 > <footer lang="en">Source</footer>
 ```
 
-也可以使用 `<cite>` 标签代替 `<footer>` 标签：
+**Chinese Environment** (using double em dash):
 
 ```markdown
-> 这是一段引用文字。
+> 这是一段中文引用。
 > 
-> <cite lang="zh">引用来源</cite>
+> <footer lang="zh">引用来源</footer>
 ```
 
-#### 引用块样式特点
+You can also use the `<cite>` tag instead of the `<footer>` tag:
 
-- 精美的视觉设计，包括引号装饰和渐变底边
-- 悬停效果，引用块会轻微上浮并增加阴影
-- 适配深色模式，在不同主题下都有良好的显示效果
-- 根据语言环境自动调整破折号样式，中文使用双破折号（——），英文使用单破折号（—）
+```markdown
+> This is a quoted text.
+> 
+> <cite lang="en">Source</cite>
+```
 
-## 贡献
+#### Blockquote Style Features
 
-欢迎提交 Issue 和 Pull Request。
+- Beautiful visual design, including quotation mark decoration and gradient bottom border
+- Hover effect, where the blockquote slightly rises and increases shadow
+- Dark mode compatible, with excellent display in different themes
+- Automatically adjusts dash style based on language environment: English uses single em dash (—), Chinese uses double em dash (——)
 
-## 许可证
+## Contributing
 
-[MIT License](LICENSE)
+Issues and Pull Requests are welcome.
+
+## License
+
+[MIT License](LICENSE) 
